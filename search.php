@@ -342,7 +342,6 @@ Public License instead of this License.
 */
 
 $hashtag = $_GET['hashtag'];
-$load = $_GET['load'];
 
 if (empty($hashtag)) {
 	header("Location: http://etheralstudios.com/hashify/");

@@ -10,6 +10,11 @@ Before you can use hashify you will need to get API keys from Google and Faceboo
 Sure! Go to http://hashify.tk (running v0.1.2) or http://pi.nick.geek.nz/hashify (running whatever is the latest, stable or not).
 
 ###Changelog
+v0.1.3
+* Changed license to MIT
+* Removed some unused code
+* Changed some wording in index.html
+
 v0.1.2
 * Removed an unused variable in search.php
 
@@ -21,3 +26,9 @@ v0.1.1
 v0.1
 
 * First commit! Hello GitHub!
+
+###To Do:
+These are some features that we want to add. Feel free to help on these.
+
+* Twitter support
+* Quality control

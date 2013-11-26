@@ -1,6 +1,21 @@
 <?php
 $hashtag = $_GET['hashtag'];
 
+require(getcwd().'/twitteroauth.php');
+
+//NOTE: Change these strings to the keys you are given
+
+//Google+
+$gpKey = "";
+//Facebook
+$fbKey = "";
+//Twitter
+$consumerkey = '';
+$consumersecret = '';
+$accesstoken = '';
+$accesstokensecret = '';
+$twKey = new TwitterOAuth($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
+
 if (empty($hashtag)) {
 	header("Location: http://etheralstudios.com/hashify/");
 }
@@ -35,7 +50,7 @@ echo "<div class='results'>";
 //Google+
 //Get Data
 $ch = curl_init();
-$url = "https://www.googleapis.com/plus/v1/activities?query=${hashtag}&maxResults=20&orderBy=best&key=XXXXXXXXXXXXXXXXXXXXX";
+$url = "https://www.googleapis.com/plus/v1/activities?query=${hashtag}&maxResults=20&orderBy=best&key=".$gpKey;
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 $result = curl_exec($ch);
@@ -54,8 +69,10 @@ if (isset($json['items'])) {
 		$title = $attachment['displayName'];
 		$url = $attachment['url'];
 		if ($type == "article" && !empty($title) && !empty($url)) {
-			array_push($gplusTitles, $title);
-			array_push($gplusURLs, $url);
+			if(!preg_match('/[^\w ]/u',$title)) {
+				array_push($gplusTitles, $title);
+				array_push($gplusURLs, $url);
+			}
 		}
 	}
 }
@@ -63,10 +80,9 @@ if (isset($json['items'])) {
 //Facebook
 //Get Data
 $ch = curl_init();
-$url = "https://graph.facebook.com/search?q=%23${hashtag}&type=post&locale=en_US&access_token=XXXXXXXXXXXXXXXX|XXXXXXXXXXXXXXXXXXXXX";
+$url = "https://graph.facebook.com/search?q=%23${hashtag}&type=post&access_token=".$fbKey;
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_HTTPHEADER, "en-US;q=0.6,en;q=0.4");
 $result = curl_exec($ch);
 $json = json_decode($result, TRUE);
 
@@ -80,8 +96,33 @@ if (isset($json['data'])) {
 		$title = $post['name'];
 		$url = $post['link'];
 		if ($type == "link" && !empty($title) && !empty($url)) {
-			array_push($facebookTitles, $title);
-			array_push($facebookURLs, $url);
+			if (!preg_match('/[^\w ]/u',$title)) {
+				array_push($facebookTitles, $title);
+				array_push($facebookURLs, $url);
+			}
+		}
+	}
+}
+
+//Twitter
+//Get Data
+$result = $twKey->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=popular&lang=en');
+$json = get_object_vars($result);
+
+//Find Data
+$twitterTitles = array();
+$twitterURLs = array();
+if (isset($json['statuses'])) {
+	foreach ($json['statuses'] as $status) {
+		$status = get_object_vars($status);
+
+		$entities = get_object_vars($status['entities']);
+		$urls = $entities['urls'];
+		$urls = get_object_vars($urls[0]);
+		$url = $urls['expanded_url'];
+		if (isset($url)) {
+			array_push($twitterTitles, $status['text']);
+			array_push($twitterURLs, $url);
 		}
 	}
 }
@@ -110,6 +151,17 @@ while ($index <= 20) {
 		echo "<hr />";
 	}
 	echo "<p id='fb'>";
+	echo "<h3><a href='$url'>$title</a></h3>";
+	echo "<i>$url</i>";
+	echo "</p>";
+
+	//Twitter
+	$title = $twitterTitles[$index];
+	$url = $twitterURLs[$index];
+	if (!$firstPost && !empty($url) && !empty($title)) {
+		echo "<hr />";
+	}
+	echo "<p id='tw'>";
 	echo "<h3><a href='$url'>$title</a></h3>";
 	echo "<i>$url</i>";
 	echo "</p>";

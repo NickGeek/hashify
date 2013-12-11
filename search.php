@@ -69,7 +69,7 @@ if (isset($json['items'])) {
 		$title = $attachment['displayName'];
 		$url = $attachment['url'];
 		if ($type == "article" && !empty($title) && !empty($url)) {
-			if(!preg_match('/[^\w ]/u',$title)) {
+			if(preg_match('/[^\w ]/u',$title)) {
 				array_push($gplusTitles, $title);
 				array_push($gplusURLs, $url);
 			}
@@ -96,7 +96,7 @@ if (isset($json['data'])) {
 		$title = $post['name'];
 		$url = $post['link'];
 		if ($type == "link" && !empty($title) && !empty($url)) {
-			if (!preg_match('/[^\w ]/u',$title)) {
+			if (preg_match('/[^\w ]/u',$title)) {
 				array_push($facebookTitles, $title);
 				array_push($facebookURLs, $url);
 			}

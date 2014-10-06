@@ -23,7 +23,7 @@ if (empty($hashtag)) {
 
 <html>
 <head>
-	<title>#<?php echo $hashtag; ?> - #ify</title>
+	<title><?php echo $hashtag; ?> - #ify</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">

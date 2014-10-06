@@ -5,54 +5,91 @@
 	<meta name="author" content="Etheral Studios">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 
 	<script>
-  	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  	ga('create', 'UA-8931238-8', 'hashify.tk');
-  	ga('send', 'pageview');
+		ga('create', 'UA-8931238-8', 'hashify.tk');
+		ga('send', 'pageview');
 	</script>
 </head>
 <body>
-	<h1>#ify - The new way to search</h1>
-	<div class="container">
-	<div class="search">
-		<center>
-		<h3>Search:</h3>
-		<form action="search.php" method="get">
-			<p>#
-			<input type="text" name="hashtag" placeholder="tag" required /></p>
-			<input type="submit" name="submit" value="#ify!" />
-		</form>
-		</center>
+	<div class="fixed">
+		<nav class="top-bar" data-topbar>
+			<ul class="title-area">
+				<li class="name">
+					<h1><a href="#">#ify - The new way to search</a></h1>
+				</li>
+				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>-->
+			</ul>
+
+			<section class="top-bar-section">
+				<!-- Right Nav Section -->
+				<ul class="right">
+					<!--<li class="has-form">
+						<div class="row collapse">
+							<div class="large-8 small-9 columns">
+								<input type="text" placeholder="Find Stuff">
+							</div>
+							<div class="large-4 small-3 columns">
+								<a href="#" class="alert button expand">Search</a>
+							</div>
+						</div>
+					</li>-->
+				</ul>
+			</section>
+		</nav>
 	</div>
-	<hr />
-	<div class="about">
-	<h2>What is #ify?</h2>
-		<p>
-			#ify (spelt "hashify") is a way of finding links that people are talking about. Search engines are good for finding information relating to a string of words that articles have included in them. #ify is for finding articles that people are talking about on the topic. Instead of any website that uses the word "iPhone" in it; we look for what people are linking to with the <a href="http://en.wikipedia.org/wiki/Hashtag">hashtag</a> "<a href="search.php?hashtag=iPhone">#iPhone</a>". This means you see the articles that people are talking about. #ify gets results from <a href="https://twitter.com">Twitter</a>, <a href="https://plus.google.com">Google+</a> and <a href="https://facebook.com">Facebook</a>.
+
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="search">
+				<center>
+					<form action="search.php" method="get">
+						<div class="row collapse">
+							<h3>Search</h3>
+							<div class="small-1 large-1 columns">
+								<span class="prefix">#</span>
+							</div>
+							<div class="small-9 large-9 columns">
+								<input type="text" name="hashtag" placeholder="tag">
+							</div>
+							<div class="small-2 large-2 columns">
+								<input type="submit" name="submit" value="#ify!" class="button postfix">
+							</div>
+						</div>
+					</form>
+				</center>
+			</div>
+			<hr />
+			<div class="about">
+				<h2>What is #ify?</h2>
+				<p>
+					#ify (spelt "hashify") is a way of finding links that people are talking about. Search engines are good for finding information relating to a string of words that articles have included in them. #ify is for finding articles that people are talking about on the topic. Instead of any website that uses the word "iPhone" in it; we look for what people are linking to with the <a href="http://en.wikipedia.org/wiki/Hashtag">hashtag</a> "<a href="search.php?hashtag=iPhone">#iPhone</a>". This means you see the articles that people are talking about. #ify gets results from <a href="https://twitter.com">Twitter</a>, <a href="https://plus.google.com">Google+</a> and <a href="https://facebook.com">Facebook</a>.
+				</p>
+				<h2>Are there any other cool projects you do?</h2>
+				<p>
+					Yes! You can check them all out at <a href="http://etheralstudios.com">http://etheralstudios.com</a>
+				</p>
+				<h2>What can I do to help out?</h2>
+				<p>
+					#ify is currently a free and ad-free service, and we plan to keep it that way. One way you could help out is to register domain names for this website (like http://hashify.org, http://hashify.com, http://hashifysearch.com, etc). If you have a domain you would like to share with us just setup a redirect to this address. It also would be really nice if you could promote the service or contribute to the actual code of the service.
+				</p>
+				<h2>Is this open source?</h2>
+				<p>
+					Yes! You can find #ify on <a href="https://github.com/NickGeek/hashify">GitHub</a> under the MIT license.
+				</p>
+			</div>
+		</div>
+		<p id="footer">
+			Copyright &copy; <a href="http://etheralstudios.com">Etheral Studios</a> 2013
 		</p>
-	<h2>Are there any other cool projects you do?</h2>
-		<p>
-			Yes! You can check them all out at <a href="http://etheralstudios.com">http://etheralstudios.com</a>
-		</p>
-	<h2>What can I do to help out?</h2>
-		<p>
-			#ify is currently a free and ad-free service, and we plan to keep it that way. One way you could help out is to register domain names for this website (like http://hashify.org, http://hashify.com, http://hashifysearch.com, etc). If you have a domain you would like to share with us just setup a redirect to this address. It also would be really nice if you could promote the service or contribute to the actual code of the service.
-		</p>
-	<h2>Is this open source?</h2>
-		<p>
-			Yes! You can find #ify on <a href="https://github.com/NickGeek/hashify">GitHub</a> under the MIT license.
-		</p>
-	</div>
-	</div>
-	<p id="footer">
-		Copyright &copy; <a href="http://etheralstudios.com">Etheral Studios</a> 2013
-	</p>
-</body>
-</html>
+		<script type="text/javascript" src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+	</body>
+	</html>

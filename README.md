@@ -7,4 +7,4 @@
 Before you can use hashify you will need to get API keys from Google, Facebook and Twitter. You can do this from their developer websites. You will then need to change the key variables in search.php to your own keys for results to show up.
 
 ###Can I see a live demo?
-Sure! Go to http://hashify.tk to see this in action.
+Sorry, not right now. It will be back up soon.
